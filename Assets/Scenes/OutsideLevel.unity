@@ -3654,6 +3654,11 @@ PrefabInstance:
       propertyPath: tradeAvailable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 609702493048559954, guid: 51f33c15a88684b4c96248ebcfabd6be,
+        type: 3}
+      propertyPath: textBoxAnimator
+      value: 
+      objectReference: {fileID: 1508280661}
     - target: {fileID: 890997294981923353, guid: 51f33c15a88684b4c96248ebcfabd6be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4891,6 +4896,11 @@ PrefabInstance:
       propertyPath: tradeAvailable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 609702493048559954, guid: 51f33c15a88684b4c96248ebcfabd6be,
+        type: 3}
+      propertyPath: textBoxAnimator
+      value: 
+      objectReference: {fileID: 1508280661}
     - target: {fileID: 890997294981923353, guid: 51f33c15a88684b4c96248ebcfabd6be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12933,7 +12943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1508280660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13491,6 +13501,11 @@ PrefabInstance:
       propertyPath: tradeAvailable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 609702493048559954, guid: 51f33c15a88684b4c96248ebcfabd6be,
+        type: 3}
+      propertyPath: textBoxAnimator
+      value: 
+      objectReference: {fileID: 1508280661}
     - target: {fileID: 890997294981923353, guid: 51f33c15a88684b4c96248ebcfabd6be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14665,7 +14680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1920352152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15432,6 +15447,11 @@ PrefabInstance:
       propertyPath: tradeAvailable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 609702493048559954, guid: 51f33c15a88684b4c96248ebcfabd6be,
+        type: 3}
+      propertyPath: textBoxAnimator
+      value: 
+      objectReference: {fileID: 1508280661}
     - target: {fileID: 890997294981923353, guid: 51f33c15a88684b4c96248ebcfabd6be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

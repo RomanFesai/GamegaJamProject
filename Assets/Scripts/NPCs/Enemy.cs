@@ -26,9 +26,8 @@ namespace Assets.Scripts.NPCs
         {
             GetComponent<Animator>().Play("dead");
             gameObject.layer = 9;
-            TraderNPC enemy = GetComponent<TraderNPC>();
+            EnemyAi enemy = GetComponent<EnemyAi>();
             enemy.agent.isStopped = true;
-            enemy.textBoxPopUp.SetActive(false);
             enemy.ResetAttack();
             enemy.enabled = false;
             Destroy(gameObject, 10f);

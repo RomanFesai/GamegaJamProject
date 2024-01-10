@@ -7,8 +7,10 @@ namespace Assets.Scripts.NPCs
 {
     public class TraderNPC : EnemyAi
     {
+        [Header("Dialogue Box Parameters")]
         [SerializeField] private TextMeshProUGUI textMeshPro;
-        public GameObject textBoxPopUp;
+        //[SerializeField] private GameObject textBoxPopUp;
+        [SerializeField] private Animator textBoxAnimator;
 
         [TextAreaAttribute]
         [SerializeField] private string message;
@@ -39,7 +41,7 @@ namespace Assets.Scripts.NPCs
                 anim.Play("Trader");
                 if (tradeAvailable)
                 { 
-                    textBoxPopUp.SetActive(true);
+                    textBoxAnimator.SetBool("playerInRange", playerInSightRange);
                     keyHint.SetActive(true);
                 }
                 textMeshPro.text = message;
@@ -53,7 +55,7 @@ namespace Assets.Scripts.NPCs
             else if(!playerInSightRange)
             {
                 keyHint.SetActive(false);
-                textBoxPopUp.SetActive(false);
+                textBoxAnimator.SetBool("playerInRange", false);
                 agent.isStopped = false;
                 GoToPoint();
             }
@@ -65,7 +67,7 @@ namespace Assets.Scripts.NPCs
             gameObject.layer = 9;
             TraderNPC enemy = GetComponent<TraderNPC>();
             enemy.agent.isStopped = true;
-            enemy.textBoxPopUp.SetActive(false);
+            textBoxAnimator.SetBool("playerInRange", false);
             enemy.enabled = false;
             /*if (tradeAvailable)
             {
@@ -84,7 +86,7 @@ namespace Assets.Scripts.NPCs
             {
                 toGet.SetActive(true);
                 toGet.transform.parent = null;
-                textBoxPopUp.SetActive(false);
+                textBoxAnimator.SetBool("playerInRange", false);
                 tradeAvailable = false;
                 keyHint.SetActive(false);
                 return;
@@ -101,7 +103,7 @@ namespace Assets.Scripts.NPCs
                         Destroy(item);
                         toGet.SetActive(true);
                         toGet.transform.parent = null;
-                        textBoxPopUp.SetActive(false);
+                        textBoxAnimator.SetBool("playerInRange", false);
                         tradeAvailable = false;
                         keyHint.SetActive(false);
                     }
