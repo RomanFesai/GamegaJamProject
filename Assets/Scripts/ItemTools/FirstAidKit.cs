@@ -27,7 +27,8 @@ namespace Assets.Scripts.ItemTools
         {
             if (itemReady && Input.GetMouseButtonDown(0))
             {
-                PlayerStats.instance.currentHealht += 30f;
+                AudioManager.instance.Play("Medkit");
+                PlayerStats.instance.currentHealht += 100f;
                 PlayerInventory.instance.DropItem();
                 Destroy(gameObject);
             }

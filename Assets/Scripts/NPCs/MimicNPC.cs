@@ -7,6 +7,14 @@ namespace Assets.Scripts.NPCs
     {
         // Update is called once per frame
         [SerializeField] private bool mimicAwaken = false;
+        private bool musicPlayed = false;
+        [SerializeField] private GameObject toGet;
+
+        private void Start()
+        {
+            mimicAwaken = false;
+            musicPlayed = false;
+        }
 
         void Update()
         {
@@ -25,6 +33,12 @@ namespace Assets.Scripts.NPCs
             if (mimicAwaken == false)
             {
                 GoToPoint();
+            }
+
+            if(playerInSightRange && !musicPlayed)
+            {
+                AudioManager.instance.Play("Violin");
+                musicPlayed = true;
             }
 
             if (playerInSightRange && !playerInAttackRange)
@@ -64,6 +78,11 @@ namespace Assets.Scripts.NPCs
             enemy.ResetAttack();
             enemy.agent.isStopped = true;
             enemy.enabled = false;
+            if (toGet != null)
+            {
+                toGet.SetActive(true);
+                toGet.transform.parent = null;
+            }
             Destroy(gameObject, 10f);
         }
 

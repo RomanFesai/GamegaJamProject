@@ -16,6 +16,8 @@ namespace Assets.Scripts
 
         IEnumerator Ending()
         {
+            AudioManager.instance.Play("JSFXn2");
+            yield return new WaitForSeconds(1f);
             anim.Play("FadeIn");
             yield return new WaitForSeconds(2f);
             AudioManager.instance.Play("ManScream");

@@ -106,6 +106,10 @@ namespace Assets.Scripts.Inventory
                             }
                             return;
                         }
+                        else if(obj.activeInHierarchy == true && obj.transform.childCount > 0)
+                        {
+                            AudioManager.instance.Play("Blocked");
+                        }
                     }
                 }
                 else if(item != null && item.tag == "Ammo")

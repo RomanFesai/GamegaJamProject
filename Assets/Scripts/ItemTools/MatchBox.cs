@@ -36,6 +36,7 @@ namespace Assets.Scripts.ItemTools
                 {
                     if (Input.GetMouseButtonDown(0) && itemReady && obj.GetComponent<Bonfire>().bonfireLit == false)
                     {
+                        AudioManager.instance.Play("Matches");
                         obj.GetComponent<Bonfire>().bonfireLit = true;
                         obj.GetComponent<SphereCollider>().enabled = true;
                         obj.transform.GetChild(2).gameObject.SetActive(true);

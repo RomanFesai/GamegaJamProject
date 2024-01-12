@@ -74,7 +74,6 @@ namespace Assets.Scripts.NPCs
                 toGet.SetActive(true);
                 toGet.transform.parent = null;
                 tradeAvailable = false;
-                textBoxPopUp.SetActive(false);
                 keyHint.SetActive(false);
             }*/
             Destroy(gameObject, 10f);
@@ -96,7 +95,7 @@ namespace Assets.Scripts.NPCs
             {
                 foreach (var obj in PlayerInventory.instance.inventoryList)
                 {
-                    if (obj.activeInHierarchy == true && obj.transform.GetChild(0).gameObject != null && obj.transform.GetChild(0).gameObject.name == toGiveName)
+                    if (obj.activeInHierarchy == true && obj.transform.childCount > 0 && obj.transform.GetChild(0).gameObject.name == toGiveName)
                     {
                         var item = obj.transform.GetChild(0).gameObject;
                         PlayerInventory.instance.DropItem();
@@ -106,6 +105,10 @@ namespace Assets.Scripts.NPCs
                         textBoxAnimator.SetBool("playerInRange", false);
                         tradeAvailable = false;
                         keyHint.SetActive(false);
+                    }
+                    else if (obj.activeInHierarchy == true && obj.transform.childCount > 0 && obj.transform.GetChild(0).gameObject.name != toGiveName || obj.activeInHierarchy == true && obj.transform.childCount < 1)
+                    {
+                        AudioManager.instance.Play("Blocked");
                     }
                 }
             }

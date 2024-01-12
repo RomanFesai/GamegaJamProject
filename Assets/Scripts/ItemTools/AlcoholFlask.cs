@@ -28,11 +28,12 @@ namespace Assets.Scripts.ItemTools
             if (itemReady && Input.GetMouseButtonDown(0))
             {
                 PlayerStats.instance.currentHealht -= 30f;
-                PlayerStats.instance.currentFreeze -= 50f;
+                PlayerStats.instance.currentFreeze -= 100f;
 
                 if(PlayerStats.instance.currentFreeze < 0)
                     PlayerStats.instance.currentFreeze = 0;
 
+                AudioManager.instance.Play("Drinking");
                 PlayerInventory.instance.DropItem();
                 Destroy(gameObject);
             }
