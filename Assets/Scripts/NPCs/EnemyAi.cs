@@ -36,11 +36,13 @@ namespace Assets.Scripts.NPCs
         //States
         public float sightRange, attackRange;
         public bool playerInSightRange, playerInAttackRange;
+        protected bool isDead;
 
         protected void Awake()
         {
             player = GameObject.Find("ChaseNavPoint").transform;
             agent = GetComponent<NavMeshAgent>();
+            isDead = false;
         }
 
         protected virtual void InitAiBehaviour()
@@ -141,6 +143,7 @@ namespace Assets.Scripts.NPCs
             {
                 health -= amount;
                 AudioManager.GetInstance().Play("EnemyInjured");
+                StartCoroutine(Stun(4f));
                 //ChasePlayer();
                 if (health <= 0f)
                 {
@@ -149,9 +152,20 @@ namespace Assets.Scripts.NPCs
                 }
             }
         }
+
+        private IEnumerator Stun(float stunTime)
+        {
+            agent.isStopped = true;
+            anim.Play("injured");
+            yield return new WaitForSeconds(stunTime);
+            if(!isDead)
+                agent.isStopped = false;
+        }
+
         public virtual void die()
         {
-            GetComponent<Animator>().Play("dead");
+            isDead = true;
+            anim.Play("dead");
             gameObject.layer = 9;
             EnemyAi enemy = GetComponent<EnemyAi>();
             enemy.agent.isStopped = true;

@@ -299,10 +299,10 @@ TextureImporter:
       name: UI_6
       rect:
         serializedVersion: 2
-        x: 675
-        y: 884
-        width: 223
-        height: 304
+        x: 677
+        y: 879
+        width: 229
+        height: 309
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,10 +341,10 @@ TextureImporter:
       name: UI_8
       rect:
         serializedVersion: 2
-        x: 1052
-        y: 870
-        width: 285
-        height: 315
+        x: 1067
+        y: 868
+        width: 270
+        height: 318
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,7 +367,7 @@ TextureImporter:
         width: 1664
         height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

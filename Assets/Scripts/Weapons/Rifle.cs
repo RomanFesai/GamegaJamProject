@@ -5,6 +5,6 @@ namespace Assets.Scripts.Weapons
 {
     public class Rifle : Weapon
     {
-
+        
     }
 }

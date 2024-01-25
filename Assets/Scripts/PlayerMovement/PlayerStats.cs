@@ -25,6 +25,7 @@ public class PlayerStats : MonoBehaviour
     public CanvasGroup DamageInformation;
     public GameObject GameOverWindow;
 
+    [SerializeField] private bool isFreezing = true;
     public static PlayerStats instance { get; private set; }
 
     private void Awake()
@@ -76,7 +77,8 @@ public class PlayerStats : MonoBehaviour
         if (PlayerMovementCC.isSprinting == true)
             StaminaDefilling(0.2f);
 
-        FreezeRefill();
+        if(isFreezing)
+            FreezeRefill();
 
         if (currentFreeze == 100)
             DecreaseHealth();
@@ -153,7 +155,7 @@ public class PlayerStats : MonoBehaviour
             while (DamageInformation.alpha > 0)
             {
                 yield return new WaitForSeconds(0.01f);
-                DamageInformation.alpha -= 0.1f;
+                DamageInformation.alpha -= 0.002f;
             }
         }
     }

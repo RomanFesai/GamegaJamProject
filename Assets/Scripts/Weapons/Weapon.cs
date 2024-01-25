@@ -2,6 +2,8 @@
 using TMPro;
 using UnityEngine;
 using Assets.Scripts.NPCs;
+using UnityEngine.UI;
+using Assets.Scripts.SaveLoad;
 
 namespace Assets.Scripts.Weapons
 {
@@ -19,7 +21,6 @@ namespace Assets.Scripts.Weapons
         [SerializeField] private Animator weaponAnim;
         //Animator Recoil;
 
-        //public CinemachineVirtualCamera fpsCam;
         [SerializeField] private GameObject shootHole;
 
         [Header("Effects")]
@@ -73,7 +74,18 @@ namespace Assets.Scripts.Weapons
         {
             gunready = true;
             aim = false;
-            FollowUI.SetActive(true);
+
+            if (shootHole == null || FollowUI == null || ammoInfo == null || recoilPosition == null || rotationPoint == null)
+            {
+                shootHole = GameObject.Find("ShootHole");
+                FollowUI = GameObject.Find("Ammo");
+                ammoInfo = GameObject.Find("currentAmmo").GetComponent<TextMeshProUGUI>();
+                recoilPosition = GameObject.Find("Head").transform;
+                rotationPoint = GameObject.Find("Hand").transform;
+            }
+
+            FollowUI.GetComponentInChildren<Image>().enabled = true;
+            FollowUI.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         }
 
         private void OnDisable()
@@ -82,7 +94,10 @@ namespace Assets.Scripts.Weapons
             aim = false;
 
             if(FollowUI != null)
-                FollowUI.SetActive(false);
+            {
+                FollowUI.GetComponentInChildren<Image>().enabled = false;
+                FollowUI.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+            }
         }
 
         protected void Start()
@@ -91,6 +106,10 @@ namespace Assets.Scripts.Weapons
                 hitmarker.SetActive(false);
 
             currentAmmo = maxAmmo;
+
+            if (TempData.instance != null)
+            { currentAmmo = TempData.instance.rifleAmmo; }//temp solution
+
             magazineSize = _magazineSize;
         }
 
@@ -203,7 +222,7 @@ namespace Assets.Scripts.Weapons
                 {
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
-                if (hit.transform.tag == "Shootable" || hit.transform.tag == "Footsteps/Rock")
+                if (hit.transform.tag == "Shootable")
                 {
                     GameObject obj = Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
                     Destroy(obj, 10f);

@@ -13,6 +13,11 @@ namespace Assets.Scripts.ItemTools
         private void OnEnable()
         {
             itemReady = true;
+
+            if(ray == null)
+            {
+                ray = GameObject.Find("ShootHole");
+            }
         }
 
         private void OnDisable()

@@ -81,34 +81,22 @@ namespace Assets.Scripts.Inventory
                         i++;
                         if(obj.activeInHierarchy == true && obj.transform.childCount < 1)
                         {
-                            item.transform.SetParent(obj.transform);
-                            InventorySlotImage[i-1].enabled = true;
-                            InventorySlotImage[i-1].sprite = item.GetComponent<Pickupable>().itemScriptableObject.item_sprite;
-                            item.transform.localPosition = Vector3.zero;
-                            item.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                            item.GetComponent<Rigidbody>().useGravity = false;
-                            item.GetComponent<Rigidbody>().isKinematic = true; //"disabling" the rigidbody (it's still active but gravity won't apply to it.
-
-                            if (item.GetComponent<Weapon>() != null)
-                                item.GetComponent<Weapon>().enabled = true;
-                            if (item.GetComponent<MatchBox>() != null)
-                                item.GetComponent<MatchBox>().enabled = true;
-                            if (item.GetComponent<AlcoholFlask>() != null)
-                                item.GetComponent<AlcoholFlask>().enabled = true;
-                            if (item.GetComponent<FirstAidKit>() != null)
-                                item.GetComponent<FirstAidKit>().enabled = true;
-
-                            item.GetComponent<BoxCollider>().enabled = false;
-                            AudioManager.instance.Play("PickUp");
-                            foreach (var transform in item.gameObject.GetComponentsInChildren<Transform>())
-                            {
-                                transform.gameObject.layer = 8;
-                            }
-                            return;
+                            AddItemToSlot(obj, i, item);
+                            break;
                         }
-                        else if(obj.activeInHierarchy == true && obj.transform.childCount > 0)
+                        else if (obj.activeInHierarchy == true && obj.transform.childCount > 0)
                         {
                             AudioManager.instance.Play("Blocked");
+                            /*i = 0;
+                            foreach (var obj2 in inventoryList)
+                            {
+                                i++;
+                                if (obj2.activeInHierarchy == false && obj2.transform.childCount < 1)
+                                {
+                                    AddItemToSlot(obj2, i, item);
+                                    break;
+                                }
+                            }*/
                         }
                     }
                 }
@@ -119,6 +107,33 @@ namespace Assets.Scripts.Inventory
                     Rifle.currentAmmo += 1;
                     Destroy(item);
                 }
+            }
+        }
+
+        public void AddItemToSlot(GameObject slotGameObject, int slotNumber, GameObject itemToAdd)
+        {
+            itemToAdd.transform.SetParent(slotGameObject.transform);
+            InventorySlotImage[slotNumber - 1].enabled = true;
+            InventorySlotImage[slotNumber - 1].sprite = itemToAdd.GetComponent<Pickupable>().itemScriptableObject.item_sprite;
+            itemToAdd.transform.localPosition = Vector3.zero;
+            itemToAdd.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            itemToAdd.GetComponent<Rigidbody>().useGravity = false;
+            itemToAdd.GetComponent<Rigidbody>().isKinematic = true; //"disabling" the rigidbody (it's still active but gravity won't apply to it.
+
+            if (itemToAdd.GetComponent<Weapon>() != null)
+                itemToAdd.GetComponent<Weapon>().enabled = true;
+            if (itemToAdd.GetComponent<MatchBox>() != null)
+                itemToAdd.GetComponent<MatchBox>().enabled = true;
+            if (itemToAdd.GetComponent<AlcoholFlask>() != null)
+                itemToAdd.GetComponent<AlcoholFlask>().enabled = true;
+            if (itemToAdd.GetComponent<FirstAidKit>() != null)
+                itemToAdd.GetComponent<FirstAidKit>().enabled = true;
+
+            itemToAdd.GetComponent<BoxCollider>().enabled = false;
+            AudioManager.instance.Play("PickUp");
+            foreach (var transform in itemToAdd.gameObject.GetComponentsInChildren<Transform>())
+            {
+                transform.gameObject.layer = 8;
             }
         }
 

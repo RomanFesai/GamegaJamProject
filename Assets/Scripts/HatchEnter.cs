@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.SaveLoad;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -19,6 +20,7 @@ namespace Assets.Scripts
         {
             if (playerInRange && Input.GetKeyDown(KeyCode.E))
             {
+                TempData.instance.Save(TempData.instance);
                 LevelLoader.GetInstance().LoadLevelByName("Bunker"); 
             }
         }

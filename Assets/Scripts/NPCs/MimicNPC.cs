@@ -59,7 +59,7 @@ namespace Assets.Scripts.NPCs
 
         protected override void GoToPoint()
         {
-            anim.Play("mimicWalk");
+            //anim.Play("mimicWalk");
             agent.speed = 1;
             agent.SetDestination(walkPoint);
         }
@@ -72,6 +72,7 @@ namespace Assets.Scripts.NPCs
 
         public override void die()
         {
+            isDead = true;
             GetComponent<Animator>().Play("dead");
             gameObject.layer = 9;
             MimicNPC enemy = GetComponent<MimicNPC>();
