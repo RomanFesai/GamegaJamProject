@@ -104,7 +104,7 @@ namespace Assets.Scripts.Inventory
                 {
                     EKeyHintDisabled();
                     AudioManager.instance.Play("PickUp");
-                    Rifle.currentAmmo += 1;
+                    Rifle.currentAmmo += 3;
                     Destroy(item);
                 }
             }

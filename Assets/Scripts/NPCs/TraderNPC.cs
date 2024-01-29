@@ -66,7 +66,7 @@ namespace Assets.Scripts.NPCs
             GetComponent<Animator>().Play("dead");
             gameObject.layer = 9;
             TraderNPC enemy = GetComponent<TraderNPC>();
-            enemy.agent.isStopped = true;
+            agent.isStopped = true;
             textBoxAnimator.SetBool("playerInRange", false);
             enemy.enabled = false;
             /*if (tradeAvailable)

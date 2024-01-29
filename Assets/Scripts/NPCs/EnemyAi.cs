@@ -8,6 +8,8 @@ namespace Assets.Scripts.NPCs
     {
         public float health = 5f;
 
+        public float stunTime = 0;
+
         public NavMeshAgent agent;
 
         public Transform player;
@@ -17,6 +19,8 @@ namespace Assets.Scripts.NPCs
         public Animator anim;
 
         public GameObject AttackHand;
+
+        private bool stunned;
 
         //[SerializeField] private AudioSource EnemyAudioSource = default;
         //[SerializeField] private AudioClip EnemyDetected = default;
@@ -135,7 +139,8 @@ namespace Assets.Scripts.NPCs
             AttackHand.GetComponent<BoxCollider>().enabled = false;
             anim.SetBool("Attack", false);
             alreadyAttacked = false;
-            agent.isStopped = false;
+            if(!stunned)
+                agent.isStopped = false;
         }
         public void TakeDamage(float amount)
         {
@@ -143,7 +148,8 @@ namespace Assets.Scripts.NPCs
             {
                 health -= amount;
                 AudioManager.GetInstance().Play("EnemyInjured");
-                StartCoroutine(Stun(4f));
+                if(stunTime != 0)
+                    StartCoroutine(Stun(stunTime));
                 //ChasePlayer();
                 if (health <= 0f)
                 {
@@ -155,9 +161,11 @@ namespace Assets.Scripts.NPCs
 
         private IEnumerator Stun(float stunTime)
         {
+            stunned = true;
             agent.isStopped = true;
             anim.Play("injured");
             yield return new WaitForSeconds(stunTime);
+            stunned = false;
             if(!isDead)
                 agent.isStopped = false;
         }

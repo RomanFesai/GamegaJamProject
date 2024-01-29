@@ -938,7 +938,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1414699067328989658}
   - component: {fileID: 609702493048559954}
-  - component: {fileID: 7484904463002606475}
   - component: {fileID: 8576643855185511774}
   - component: {fileID: 3160607361903800469}
   - component: {fileID: 3269664855804684891}
@@ -997,25 +996,12 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   textMeshPro: {fileID: 0}
-  textBoxPopUp: {fileID: 0}
+  textBoxAnimator: {fileID: 0}
   message: 
   toGet: {fileID: 0}
   toGiveName: 
   tradeAvailable: 0
   keyHint: {fileID: 0}
---- !u!114 &7484904463002606475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4671534383075028860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c479d1d71a8127a46bd31eefb285c5d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
 --- !u!65 &8576643855185511774
 BoxCollider:
   m_ObjectHideFlags: 0

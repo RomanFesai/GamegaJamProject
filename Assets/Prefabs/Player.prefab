@@ -5479,6 +5479,7 @@ GameObject:
   - component: {fileID: 2480200838417164204}
   - component: {fileID: 3064617177398470188}
   - component: {fileID: 1043645563544651320}
+  - component: {fileID: 6432533759445331358}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -5786,6 +5787,19 @@ MonoBehaviour:
   FreezeBar: {fileID: 0}
   DamageInformation: {fileID: 0}
   GameOverWindow: {fileID: 0}
+  isFreezing: 0
+--- !u!114 &6432533759445331358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8015919992625452977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e55231e89302d84491670d13ddca00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8151868208832182863
 GameObject:
   m_ObjectHideFlags: 0

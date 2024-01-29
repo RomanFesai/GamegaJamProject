@@ -11,6 +11,7 @@ TagManager:
   - Bonfire
   - NPC
   - Footsteps/Rock
+  - Shootable
   layers:
   - Default
   - TransparentFX

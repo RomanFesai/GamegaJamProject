@@ -12,12 +12,14 @@ namespace Assets.Scripts.Weapons
         [SerializeField] private float Damage = 1f;
         [SerializeField] private float Range = 100f;
         [SerializeField] private float FireRate = 15f;
+        [SerializeField] private float spread = 1;
         [SerializeField] private float aimSpeed = 1f;
+        [SerializeField] private int bulletsPerTap, timeBetweenShots;
         [SerializeField] private bool gunready = false;
         [SerializeField] private bool isReloading = false;
         public static bool aim = false;
         [SerializeField] private float impactForce = 30f;
-        [SerializeField] private float nextTimeToFire = 0f;
+        private float nextTimeToFire = 0f;
         [SerializeField] private Animator weaponAnim;
         //Animator Recoil;
 
@@ -38,6 +40,7 @@ namespace Assets.Scripts.Weapons
         public float reloadTime = 1f;
         private bool NoAmmo = false;
         private bool isAmmoCheck = false;
+        private int bulletsShot;
 
 
         [Header("Reference Points:")]
@@ -189,13 +192,14 @@ namespace Assets.Scripts.Weapons
         {
             if (gunready && Time.time >= nextTimeToFire && !NoAmmo && !isReloading /*&& !PlayerMovementCC.isSprinting*/ && currentAmmo != 0 && !isAmmoCheck)
             {
+                bulletsShot = bulletsPerTap;
                 nextTimeToFire = Time.time + 1f / FireRate;
                 Shoot();
                 AudioManager.GetInstance()?.Play("Shoot");
                 weaponAnim.SetTrigger("Shoot");
                 muzzleFlash.Play();
             }
-            else if (Time.time >= nextTimeToFire && !isReloading && !PlayerMovementCC.isSprinting)
+            else if (Time.time >= nextTimeToFire && !isReloading)
             {
                 AudioManager.GetInstance().Play("Click");
             }
@@ -204,9 +208,17 @@ namespace Assets.Scripts.Weapons
         protected void Shoot()
         {
             currentAmmo--;
+            bulletsShot--;
+
+            //Spread
+            float x = Random.Range(-spread, spread);
+            float y = Random.Range(-spread, spread);
+
+            //Calculate Direction with Spread
+            Vector3 direction = shootHole.transform.forward + new Vector3(x, y, 0);
 
             RaycastHit hit;
-            if (Physics.Raycast(shootHole.transform.position, shootHole.transform.forward, out hit, Range))
+            if (Physics.Raycast(shootHole.transform.position, direction, out hit, Range))
             {
                 EnemyAi enemy = hit.transform.GetComponent<EnemyAi>();
 
@@ -232,6 +244,9 @@ namespace Assets.Scripts.Weapons
 
             rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
             positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
+
+            if(bulletsShot > 0 && currentAmmo > 0)
+                Invoke(nameof(Shoot), timeBetweenShots);
         }
 
         protected void Aim()

@@ -139,10 +139,11 @@ public class PlayerStats : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "mixamorig:RightHand")
+        if (other.gameObject.name == "mixamorig:RightHand" || other.gameObject.name == "AttackBox")
         {
             DamageInformation.alpha = 1;
             TakeDamage(15);
+            //CameraShake.instance?.Play(.1f, .4f);
             //AudioManager.instance.Play("Injured");
             StartCoroutine(DamageInfoFadeOut());
             Debug.Log("Thats Hurt");

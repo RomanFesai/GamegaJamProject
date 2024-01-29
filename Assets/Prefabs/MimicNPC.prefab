@@ -1593,7 +1593,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2068199819837653130}
   - component: {fileID: 9112201725267465256}
-  - component: {fileID: 5562008104962148059}
   - component: {fileID: 4640506020641708563}
   - component: {fileID: 7409257810800201894}
   - component: {fileID: 7278048717882254734}
@@ -1652,19 +1651,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   mimicAwaken: 0
---- !u!114 &5562008104962148059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435434627724176149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c479d1d71a8127a46bd31eefb285c5d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
+  toGet: {fileID: 0}
 --- !u!65 &4640506020641708563
 BoxCollider:
   m_ObjectHideFlags: 0
