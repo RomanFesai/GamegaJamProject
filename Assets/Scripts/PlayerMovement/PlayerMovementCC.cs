@@ -66,6 +66,7 @@ public class PlayerMovementCC : MonoBehaviour
     {
         defaultYPos = playerCam.transform.localPosition.y;
         isSprinting = false;
+        isWalking = false;
     }
     void Start()
     {

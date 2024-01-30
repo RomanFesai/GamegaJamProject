@@ -5308,11 +5308,13 @@ MonoBehaviour:
   Damage: 1
   Range: 100
   FireRate: 0.6
+  spread: 0
   aimSpeed: 15
+  bulletsPerTap: 1
+  timeBetweenShots: 0
   gunready: 0
   isReloading: 0
   impactForce: 30
-  nextTimeToFire: 0
   weaponAnim: {fileID: 3786660002749702282}
   shootHole: {fileID: 0}
   hitmarker: {fileID: 0}

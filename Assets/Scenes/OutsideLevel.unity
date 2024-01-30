@@ -1850,6 +1850,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: AmmoPickUp
+    clip: {fileID: 8300000, guid: e47695aa712c16242ac6e9f12524eed7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &374398139
 Transform:
   m_ObjectHideFlags: 0
@@ -2537,7 +2543,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 867cf97b88d1b534a83ab9be66e727a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 29.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 867cf97b88d1b534a83ab9be66e727a0,
         type: 3}
@@ -2547,7 +2553,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 867cf97b88d1b534a83ab9be66e727a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -624
+      value: -142.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 867cf97b88d1b534a83ab9be66e727a0,
         type: 3}
@@ -7549,11 +7555,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5990953571713391086, guid: 90c149591fbafda4db7343b584299456,
         type: 3}
-      propertyPath: spread
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990953571713391086, guid: 90c149591fbafda4db7343b584299456,
-        type: 3}
       propertyPath: FollowUI
       value: 
       objectReference: {fileID: 456670861}
@@ -7567,16 +7568,6 @@ PrefabInstance:
       propertyPath: shootHole
       value: 
       objectReference: {fileID: 2026689427}
-    - target: {fileID: 5990953571713391086, guid: 90c149591fbafda4db7343b584299456,
-        type: 3}
-      propertyPath: bulletHole
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990953571713391086, guid: 90c149591fbafda4db7343b584299456,
-        type: 3}
-      propertyPath: bulletsPerTap
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5990953571713391086, guid: 90c149591fbafda4db7343b584299456,
         type: 3}
       propertyPath: rotationPoint

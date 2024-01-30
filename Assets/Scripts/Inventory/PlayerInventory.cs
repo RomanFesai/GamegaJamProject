@@ -74,6 +74,9 @@ namespace Assets.Scripts.Inventory
                 var item = hitInfo.transform.gameObject;
                 if(item != null && item.tag == "Item")
                 {
+                    if (inventoryList[0].transform.childCount > 0 && inventoryList[1].transform.childCount > 0 && inventoryList[2].transform.childCount > 0 && inventoryList[3].transform.childCount > 0)
+                        AudioManager.instance.Play("Blocked");
+
                     EKeyHintDisabled();
                     int i = 0;
                     foreach (var obj in inventoryList)
@@ -86,8 +89,8 @@ namespace Assets.Scripts.Inventory
                         }
                         else if (obj.activeInHierarchy == true && obj.transform.childCount > 0)
                         {
-                            AudioManager.instance.Play("Blocked");
-                            /*i = 0;
+                            //AudioManager.instance.Play("Blocked");
+                            i = 0;
                             foreach (var obj2 in inventoryList)
                             {
                                 i++;
@@ -96,14 +99,14 @@ namespace Assets.Scripts.Inventory
                                     AddItemToSlot(obj2, i, item);
                                     break;
                                 }
-                            }*/
+                            }
                         }
                     }
                 }
                 else if(item != null && item.tag == "Ammo")
                 {
                     EKeyHintDisabled();
-                    AudioManager.instance.Play("PickUp");
+                    AudioManager.instance.Play("AmmoPickUp");
                     Rifle.currentAmmo += 3;
                     Destroy(item);
                 }
