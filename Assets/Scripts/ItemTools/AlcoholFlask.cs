@@ -34,6 +34,7 @@ namespace Assets.Scripts.ItemTools
                     PlayerStats.instance.currentFreeze = 0;
 
                 AudioManager.instance.Play("Drinking");
+                PlayerStats.instance.EnableDrunkEffect(20f);
                 PlayerInventory.instance.DropItem();
                 Destroy(gameObject);
             }

@@ -5785,6 +5785,7 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   StaminaBar: {fileID: 0}
   FreezeBar: {fileID: 0}
+  fpsCam: {fileID: 0}
   DamageInformation: {fileID: 0}
   GameOverWindow: {fileID: 0}
   isFreezing: 0

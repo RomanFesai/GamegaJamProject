@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets;
 using Assets.Scripts.Inventory;
+using Cinemachine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Stats")]
     public int maxHealht;
     public float currentHealht;
     public int damage;
@@ -14,13 +16,16 @@ public class PlayerStats : MonoBehaviour
     public float currentStamina;
     public float currentFreeze;
 
+    [Header("Timers")]
     public float staminaRegenTimer = 0;
     public float minusStaminaTimer = 0;
     public float freezeTimer = 0;
 
+    [Space]
     [SerializeField] private Image HealthBar;
     [SerializeField] private Image StaminaBar;
     [SerializeField] private Image FreezeBar;
+    [SerializeField] private CinemachineVirtualCamera fpsCam;
 
     public CanvasGroup DamageInformation;
     public GameObject GameOverWindow;
@@ -159,6 +164,20 @@ public class PlayerStats : MonoBehaviour
                 DamageInformation.alpha -= 0.002f;
             }
         }
+    }
+
+    public void EnableDrunkEffect(float time)
+    {
+        StartCoroutine(DrunkEffect(time));
+    }
+
+    IEnumerator DrunkEffect(float time)
+    {
+        fpsCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 10f;
+        fpsCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 1f;
+        yield return new WaitForSeconds(time);
+        fpsCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0f;
+        fpsCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 0f;
     }
 
     public void TakeDamage(int damage)

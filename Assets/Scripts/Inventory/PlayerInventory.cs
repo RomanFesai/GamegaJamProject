@@ -106,7 +106,7 @@ namespace Assets.Scripts.Inventory
                 else if(item != null && item.tag == "Ammo")
                 {
                     EKeyHintDisabled();
-                    AudioManager.instance.Play("AmmoPickUp");
+                    AudioManager.instance?.Play("AmmoPickUp");
                     Rifle.currentAmmo += 3;
                     Destroy(item);
                 }

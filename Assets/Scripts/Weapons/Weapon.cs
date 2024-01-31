@@ -36,7 +36,7 @@ namespace Assets.Scripts.Weapons
         [SerializeField] private int maxAmmo = 8;
         public static int magazineSize = 8;
         [SerializeField] private int _magazineSize;
-        public static int currentAmmo = -1;
+        public static int currentAmmo = 3;
         public float reloadTime = 1f;
         private bool NoAmmo = false;
         private bool isAmmoCheck = false;
@@ -73,6 +73,16 @@ namespace Assets.Scripts.Weapons
         Vector3 positionalRecoil;
         Vector3 Rot;
 
+        private void Awake()
+        {
+            currentAmmo = maxAmmo;
+
+            if (TempData.instance != null)
+            { currentAmmo = TempData.instance.rifleAmmo; }
+
+            magazineSize = _magazineSize;
+        }
+
         private void OnEnable()
         {
             gunready = true;
@@ -107,13 +117,6 @@ namespace Assets.Scripts.Weapons
         {
             if (hitmarker != null)
                 hitmarker.SetActive(false);
-
-            currentAmmo = maxAmmo;
-
-            if (TempData.instance != null)
-            { currentAmmo = TempData.instance.rifleAmmo; }//temp solution
-
-            magazineSize = _magazineSize;
         }
 
         protected void Update()
