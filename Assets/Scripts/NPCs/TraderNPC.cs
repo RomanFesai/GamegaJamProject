@@ -9,7 +9,6 @@ namespace Assets.Scripts.NPCs
     {
         [Header("Dialogue Box Parameters")]
         [SerializeField] private TextMeshProUGUI textMeshPro;
-        //[SerializeField] private GameObject textBoxPopUp;
         [SerializeField] private Animator textBoxAnimator;
 
         [TextAreaAttribute]
@@ -19,7 +18,9 @@ namespace Assets.Scripts.NPCs
         [SerializeField] private GameObject toGet;
         [SerializeField] private string toGiveName;
         [SerializeField] private bool tradeAvailable;
-        [SerializeField] private GameObject keyHint;
+        [SerializeField] private Animator ui_anim;
+        [SerializeField] private TextMeshProUGUI ui_anim_text_mesh;
+        [SerializeField] private string ui_anim_text;
         private void Update()
         {
             InitAiBehaviour();
@@ -42,7 +43,8 @@ namespace Assets.Scripts.NPCs
                 if (tradeAvailable)
                 { 
                     textBoxAnimator.SetBool("playerInRange", playerInSightRange);
-                    keyHint.SetActive(true);
+                    ui_anim_text_mesh.text = ui_anim_text;
+                    ui_anim.SetBool("ShowHintTrade", true);
                 }
                 textMeshPro.text = message;
                 agent.isStopped = true;
@@ -54,7 +56,7 @@ namespace Assets.Scripts.NPCs
             }
             else if(!playerInSightRange)
             {
-                keyHint.SetActive(false);
+                ui_anim.SetBool("ShowHintTrade", false);
                 textBoxAnimator.SetBool("playerInRange", false);
                 agent.isStopped = false;
                 GoToPoint();
@@ -87,7 +89,7 @@ namespace Assets.Scripts.NPCs
                 toGet.transform.parent = null;
                 textBoxAnimator.SetBool("playerInRange", false);
                 tradeAvailable = false;
-                keyHint.SetActive(false);
+                ui_anim.SetBool("ShowHintTrade", false);
                 return;
             }
 
@@ -104,7 +106,7 @@ namespace Assets.Scripts.NPCs
                         toGet.transform.parent = null;
                         textBoxAnimator.SetBool("playerInRange", false);
                         tradeAvailable = false;
-                        keyHint.SetActive(false);
+                        ui_anim.SetBool("ShowHintTrade", false);
                     }
                     else if (obj.activeInHierarchy == true && obj.transform.childCount > 0 && obj.transform.GetChild(0).gameObject.name != toGiveName || obj.activeInHierarchy == true && obj.transform.childCount < 1)
                     {

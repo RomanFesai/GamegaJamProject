@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 3414871884254009970}
   - component: {fileID: 662694133483302184}
   - component: {fileID: 3032608603225398287}
+  - component: {fileID: 3714747482047121533}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -254,6 +255,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &3714747482047121533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792985939456170052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: -446.14587, y: 846.48206, z: -179.66138}
 --- !u!1 &845838139698223835
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +480,7 @@ GameObject:
   - component: {fileID: 1985273473588342306}
   - component: {fileID: 8636952196596437379}
   - component: {fileID: 6308133545135085284}
+  - component: {fileID: 8368093243082012536}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -516,6 +535,18 @@ MonoBehaviour:
   mouseSensitivityY: 0.5
   mouseSensitivity: 1
   playerBody: {fileID: 1648680359950507830}
+--- !u!114 &8368093243082012536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953541009792227212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e55231e89302d84491670d13ddca00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3954190908466747700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,7 +5510,6 @@ GameObject:
   - component: {fileID: 2480200838417164204}
   - component: {fileID: 3064617177398470188}
   - component: {fileID: 1043645563544651320}
-  - component: {fileID: 6432533759445331358}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -5760,7 +5790,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  E_Key: {fileID: 0}
+  KeyHint: {fileID: 0}
+  ui_anim: {fileID: 0}
+  ui_anim_text_mesh: {fileID: 0}
+  ui_anim_text: "[E] \u0412\u0437\u044F\u0442\u044C"
 --- !u!114 &1043645563544651320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5785,22 +5818,10 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   StaminaBar: {fileID: 0}
   FreezeBar: {fileID: 0}
-  fpsCam: {fileID: 0}
+  fpsCam: {fileID: 4502116488631927881}
   DamageInformation: {fileID: 0}
   GameOverWindow: {fileID: 0}
-  isFreezing: 0
---- !u!114 &6432533759445331358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8015919992625452977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e55231e89302d84491670d13ddca00e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isFreezing: 1
 --- !u!1 &8151868208832182863
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using Assets.Scripts.Weapons;
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -28,7 +29,9 @@ namespace Assets.Scripts.Inventory
         [Header("UI")]
         [SerializeField] private Image[] InventorySlotImage = new Image[4];
         [SerializeField] private Image[] InventorySlotHighlite = new Image[4];
-        [SerializeField] private GameObject E_Key;
+        [SerializeField] private Animator ui_anim;
+        [SerializeField] private TextMeshProUGUI ui_anim_text_mesh;
+        [SerializeField] private string ui_anim_text;
 
         public static PlayerInventory instance { get; private set; }
 
@@ -224,10 +227,10 @@ namespace Assets.Scripts.Inventory
                 switch (objectTag)
                 {
                     case "Item":
-                        EKeyHintActive();
+                        EKeyHintActive(ui_anim_text);
                         break;
                     case "Ammo":
-                        EKeyHintActive();
+                        EKeyHintActive(ui_anim_text);
                         break;
                     default:
                         EKeyHintDisabled();
@@ -240,14 +243,17 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public void EKeyHintActive()
+        public void EKeyHintActive(string text)
         {
-            E_Key.SetActive(true);
+            //KeyHint.SetActive(true);
+            ui_anim.SetBool("ShowHintTake", true);
+            ui_anim_text_mesh.text = text;
         }
 
         public void EKeyHintDisabled()
         {
-            E_Key.SetActive(false);
+            //KeyHint.SetActive(false);
+            ui_anim.SetBool("ShowHintTake", false);
         }
     }
 }

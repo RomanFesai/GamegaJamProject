@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.Scripts.NPCs;
 using UnityEngine.UI;
 using Assets.Scripts.SaveLoad;
+using Assets.Scripts.PauseMenuScripts;
 
 namespace Assets.Scripts.Weapons
 {
@@ -193,7 +194,7 @@ namespace Assets.Scripts.Weapons
 
         protected void PerformShoot()
         {
-            if (gunready && Time.time >= nextTimeToFire && !NoAmmo && !isReloading /*&& !PlayerMovementCC.isSprinting*/ && currentAmmo != 0 && !isAmmoCheck)
+            if (gunready && Time.time >= nextTimeToFire && !NoAmmo && !isReloading /*&& !PlayerMovementCC.isSprinting*/ && currentAmmo != 0 && !isAmmoCheck && !PauseMenu.GameIsPaused)
             {
                 bulletsShot = bulletsPerTap;
                 nextTimeToFire = Time.time + 1f / FireRate;

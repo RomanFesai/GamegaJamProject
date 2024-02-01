@@ -6,7 +6,7 @@ namespace Assets.Scripts.UI
 {
     public class GameOverWindow : MonoBehaviour
     {
-        private bool isGameOver = false;
+        public static bool isGameOver = false;
 
         public bool IsGameOver { get => isGameOver; set => isGameOver = value; }
 

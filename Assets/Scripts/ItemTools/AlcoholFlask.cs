@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Inventory;
+using Assets.Scripts.PauseMenuScripts;
 using System.Collections;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Assets.Scripts.ItemTools
 
         private void UseFlask()
         {
-            if (itemReady && Input.GetMouseButtonDown(0))
+            if (itemReady && Input.GetMouseButtonDown(0) && !PauseMenu.GameIsPaused)
             {
                 PlayerStats.instance.currentHealht -= 30f;
                 PlayerStats.instance.currentFreeze -= 100f;

@@ -1,0 +1,5 @@
+VAR answer = ""
+VAR answer2 = ""
+VAR answer3 = ""
+VAR answerFatAssRat = ""
+VAR answerDiscoCat = ""

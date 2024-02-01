@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Inventory;
+using Assets.Scripts.PauseMenuScripts;
 using System.Collections;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Assets.Scripts.ItemTools
 
         private void UseAid()
         {
-            if (itemReady && Input.GetMouseButtonDown(0))
+            if (itemReady && Input.GetMouseButtonDown(0) && !PauseMenu.GameIsPaused)
             {
                 AudioManager.instance.Play("Medkit");
                 PlayerStats.instance.currentHealht += 100f;

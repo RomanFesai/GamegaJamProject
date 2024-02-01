@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Inventory;
 using Assets.Scripts.NPCs;
+using Assets.Scripts.PauseMenuScripts;
 using System.Collections;
 using UnityEngine;
 
@@ -39,7 +40,7 @@ namespace Assets.Scripts.ItemTools
                 
                 if (obj != null && obj.tag == "Bonfire")
                 {
-                    if (Input.GetMouseButtonDown(0) && itemReady && obj.GetComponent<Bonfire>().bonfireLit == false)
+                    if (Input.GetMouseButtonDown(0) && itemReady && obj.GetComponent<Bonfire>().bonfireLit == false && !PauseMenu.GameIsPaused)
                     {
                         AudioManager.instance.Play("Matches");
                         obj.GetComponent<Bonfire>().bonfireLit = true;

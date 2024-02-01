@@ -1022,8 +1022,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1.8890235, z: 3.6082025}
-  m_Center: {x: 0.00000000804917, y: 1.4217888, z: -0.571179}
+  m_Size: {x: 2.0000002, y: 1.8890235, z: 3.9871967}
+  m_Center: {x: 0.0000003700692, y: 1.4217888, z: -0.38168395}
 --- !u!1 &176664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,7 +1542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8944326212868887946}
   - component: {fileID: 7326692255554191207}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
