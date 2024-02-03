@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.SaveLoad;
+using Assets.Scripts.Translation;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Assets.Scripts
         [SerializeField] private Animator ui_anim;
         [SerializeField] private TextMeshProUGUI ui_anim_text_mesh;
         [SerializeField] private string ui_anim_text;
+        [SerializeField] private string ui_anim_text_eng;
+
         private GameObject player;
 
         private void Start()
@@ -33,7 +36,10 @@ namespace Assets.Scripts
             if (other.gameObject.tag == "Player")
             {
                 player = other.gameObject;
-                ui_anim_text_mesh.text = ui_anim_text;
+                if(Language.instance?.currentLanguage == "Русский")
+                    ui_anim_text_mesh.text = ui_anim_text;
+                else if (Language.instance?.currentLanguage == "English")
+                    ui_anim_text_mesh.text = ui_anim_text_eng;
                 ui_anim.SetBool("ShowHintEnter", true);
                 playerInRange = true;
             }

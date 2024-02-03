@@ -6,6 +6,7 @@ using UnityEngine;
 public class WolfNPC : EnemyAi
 {
     [SerializeField] private bool musicPlayed;
+    [SerializeField] private bool isPatroling = true;
     [SerializeField] private AudioSource wolf_bark;
     // Start is called before the first frame update
     void Start()
@@ -40,16 +41,19 @@ public class WolfNPC : EnemyAi
         {
             agent.speed = 6;
             anim.SetBool("wolf_run", true);
+            anim.SetBool("wolf_walk", false);
             ChasePlayer();
         }
         if (playerInAttackRange && playerInSightRange)
         {
             AttackPlayer();
         }
-        if (!playerInSightRange)
+        if (!playerInSightRange && isPatroling)
         {
             agent.speed = 3;
+            anim.SetBool("wolf_walk", true);
             anim.SetBool("wolf_run", false);
+            anim.SetBool("isPatroling", isPatroling);
             Patroling();
         }
     }

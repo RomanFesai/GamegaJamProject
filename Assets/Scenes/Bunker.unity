@@ -819,15 +819,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4671523591738702, guid: a7eadb04508f7614597759b8c3226a56, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4671523591738702, guid: a7eadb04508f7614597759b8c3226a56, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4671523591738702, guid: a7eadb04508f7614597759b8c3226a56, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4671523591738702, guid: a7eadb04508f7614597759b8c3226a56, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2436,7 +2436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 1545064452}
-  transitionTime: 1
+  transitionTime: 4.7
 --- !u!4 &270676300
 Transform:
   m_ObjectHideFlags: 0
@@ -9795,6 +9795,12 @@ Transform:
   - {fileID: 1594460424}
   m_Father: {fileID: 1145729392}
   m_LocalEulerAnglesHint: {x: 81.08975, y: -92.4985, z: 179.83035}
+--- !u!1 &1127799285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2514513994384790789, guid: 1cf366f340d79bc49836d16573fe1970,
+    type: 3}
+  m_PrefabInstance: {fileID: 75226130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1133222904
 GameObject:
   m_ObjectHideFlags: 0
@@ -11591,7 +11597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1127799285}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1352953819
@@ -11850,8 +11856,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5851324923524375321, guid: f8243bb353e5cb74481bb26fe62fd298,
         type: 3}
+      propertyPath: stunTime
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851324923524375321, guid: f8243bb353e5cb74481bb26fe62fd298,
+        type: 3}
       propertyPath: attackRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851324923524375321, guid: f8243bb353e5cb74481bb26fe62fd298,
+        type: 3}
+      propertyPath: isPatroling
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6797551512971474542, guid: f8243bb353e5cb74481bb26fe62fd298,
         type: 3}
@@ -14314,6 +14330,11 @@ PrefabInstance:
       propertyPath: ui_anim
       value: 
       objectReference: {fileID: 1505019548}
+    - target: {fileID: 3064617177398470188, guid: 7ce01825b7d8ea24daf62a2dbbf4f1ad,
+        type: 3}
+      propertyPath: ui_anim_text_eng
+      value: '[E] Take'
+      objectReference: {fileID: 0}
     - target: {fileID: 3064617177398470188, guid: 7ce01825b7d8ea24daf62a2dbbf4f1ad,
         type: 3}
       propertyPath: ui_anim_text_mesh

@@ -10,7 +10,10 @@ namespace Assets.Scripts
         {
             if(other.gameObject.tag == "Player")
             {
-                StartCoroutine(Ending());
+                //StartCoroutine(Ending());
+
+                AudioManager.instance.Play("JSFXn2");
+                LevelLoader.GetInstance().LoadLevelByName("OtherRealm");
             }
         }
 

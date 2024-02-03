@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Interfaces;
 using Assets.Scripts.Items;
 using Assets.Scripts.ItemTools;
+using Assets.Scripts.Translation;
 using Assets.Scripts.Weapons;
 using Cinemachine;
 using System.Collections;
@@ -30,8 +31,9 @@ namespace Assets.Scripts.Inventory
         [SerializeField] private Image[] InventorySlotImage = new Image[4];
         [SerializeField] private Image[] InventorySlotHighlite = new Image[4];
         [SerializeField] private Animator ui_anim;
-        [SerializeField] private TextMeshProUGUI ui_anim_text_mesh;
+        public TextMeshProUGUI ui_anim_text_mesh;
         [SerializeField] private string ui_anim_text;
+        [SerializeField] private string ui_anim_text_eng;
 
         public static PlayerInventory instance { get; private set; }
 
@@ -134,9 +136,13 @@ namespace Assets.Scripts.Inventory
                 itemToAdd.GetComponent<AlcoholFlask>().enabled = true;
             if (itemToAdd.GetComponent<FirstAidKit>() != null)
                 itemToAdd.GetComponent<FirstAidKit>().enabled = true;
+            if (itemToAdd.GetComponent<Apple>() != null)
+                itemToAdd.GetComponent<Apple>().enabled = true;
+            if (itemToAdd.GetComponent<Dynamite>() != null)
+                itemToAdd.GetComponent<Dynamite>().enabled = true;
 
             itemToAdd.GetComponent<BoxCollider>().enabled = false;
-            AudioManager.instance.Play("PickUp");
+            AudioManager.instance?.Play("PickUp");
             foreach (var transform in itemToAdd.gameObject.GetComponentsInChildren<Transform>())
             {
                 transform.gameObject.layer = 8;
@@ -166,6 +172,10 @@ namespace Assets.Scripts.Inventory
                         item.GetComponent<AlcoholFlask>().enabled = false;
                     if (item.GetComponent<FirstAidKit>() != null)
                         item.GetComponent<FirstAidKit>().enabled = false;
+                    if (item.GetComponent<Apple>() != null)
+                        item.GetComponent<Apple>().enabled = false;
+                    if (item.GetComponent<Dynamite>() != null)
+                        item.GetComponent<Dynamite>().enabled = false;
 
                     item.GetComponent<BoxCollider>().enabled = true;
                     item.GetComponent<Rigidbody>().AddForce(item.transform.forward * ThrowForce);
@@ -227,10 +237,16 @@ namespace Assets.Scripts.Inventory
                 switch (objectTag)
                 {
                     case "Item":
-                        EKeyHintActive(ui_anim_text);
+                        if(Language.instance?.currentLanguage == "Русский")
+                            EKeyHintActive(ui_anim_text);
+                        else if(Language.instance?.currentLanguage == "English")
+                            EKeyHintActive(ui_anim_text_eng);
                         break;
                     case "Ammo":
-                        EKeyHintActive(ui_anim_text);
+                        if (Language.instance?.currentLanguage == "Русский")
+                            EKeyHintActive(ui_anim_text);
+                        else if (Language.instance?.currentLanguage == "English")
+                            EKeyHintActive(ui_anim_text_eng);
                         break;
                     default:
                         EKeyHintDisabled();

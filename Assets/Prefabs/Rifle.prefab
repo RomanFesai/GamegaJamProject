@@ -5153,7 +5153,6 @@ GameObject:
   - component: {fileID: 4580668785823320170}
   - component: {fileID: 5990953571713391086}
   - component: {fileID: 3786660002749702282}
-  - component: {fileID: 3891783024131715988}
   m_Layer: 12
   m_Name: Rifle
   m_TagString: Item
@@ -5321,6 +5320,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 5755090768297313044}
   bulletHole: {fileID: 0}
   FollowUI: {fileID: 0}
+  aim_dot: {fileID: 0}
   ammoInfo: {fileID: 0}
   maxAmmo: 3
   _magazineSize: 3
@@ -5358,27 +5358,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!135 &3891783024131715988
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5342948101654105451}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 1.9511516
-  m_Center: {x: -0.000000044703484, y: -0.05515252, z: 0.5829513}
 --- !u!1 &8915862156400999882
 GameObject:
   m_ObjectHideFlags: 0

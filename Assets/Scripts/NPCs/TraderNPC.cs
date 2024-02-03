@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Inventory;
+using Assets.Scripts.Translation;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Assets.Scripts.NPCs
 
         [TextAreaAttribute]
         [SerializeField] private string message;
+        [TextAreaAttribute]
+        [SerializeField] private string message_eng;
 
         [Header("Trade")]
         [SerializeField] private GameObject toGet;
@@ -21,6 +24,7 @@ namespace Assets.Scripts.NPCs
         [SerializeField] private Animator ui_anim;
         [SerializeField] private TextMeshProUGUI ui_anim_text_mesh;
         [SerializeField] private string ui_anim_text;
+        [SerializeField] private string ui_anim_text_eng;
         private void Update()
         {
             InitAiBehaviour();
@@ -43,10 +47,16 @@ namespace Assets.Scripts.NPCs
                 if (tradeAvailable)
                 { 
                     textBoxAnimator.SetBool("playerInRange", playerInSightRange);
-                    ui_anim_text_mesh.text = ui_anim_text;
+                    if(Language.instance?.currentLanguage == "Русский")
+                        ui_anim_text_mesh.text = ui_anim_text;
+                    else if (Language.instance?.currentLanguage == "English")
+                        ui_anim_text_mesh.text = ui_anim_text_eng;
                     ui_anim.SetBool("ShowHintTrade", true);
                 }
-                textMeshPro.text = message;
+                if (Language.instance?.currentLanguage == "Русский")
+                    textMeshPro.text = message;
+                else if (Language.instance?.currentLanguage == "English")
+                    textMeshPro.text = message_eng;
                 agent.isStopped = true;
                 transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
                 if (Input.GetKeyDown(KeyCode.E) && tradeAvailable)

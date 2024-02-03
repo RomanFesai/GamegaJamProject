@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Assets.Scripts.Translation;
 
 namespace Assets.Scripts.MainMenu
 {
@@ -18,9 +19,11 @@ namespace Assets.Scripts.MainMenu
         [SerializeField] private GameObject settingsSubMenu;
         [SerializeField] private GameObject creditsSubMenu;
         [SerializeField] private TMP_Dropdown resolutionDropdown;
+        [SerializeField] private TMP_Dropdown languageDropdown;
 
         private Resolution[] resolutions;
         private List<Resolution> filteredResolutions;
+        private List<string> languages = new List<string> {"English", "Русский"};
         string scene;
         private void Start()
         {
@@ -89,7 +92,7 @@ namespace Assets.Scripts.MainMenu
 
             for (int i = 0; i < resolutions.Length; i++)
             {
-                if(resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+                if(resolutions[i].refreshRateRatio.value == Screen.currentResolution.refreshRateRatio.value)
                     filteredResolutions.Add(resolutions[i]);
             }
 
@@ -114,10 +117,21 @@ namespace Assets.Scripts.MainMenu
             resolutionDropdown.RefreshShownValue();
         }
 
+        public void InitLanguages()
+        {
+            languageDropdown.AddOptions(languages);
+        }
+
         public void SetResolution(int resolutionIndex)
         {
             Resolution resolution = filteredResolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
+
+        public void SetLanguage(int languageIndex)
+        {
+            Language.instance.currentLanguage = languageDropdown.options[languageIndex].text;
+            Debug.Log(Language.instance.currentLanguage);
         }
 
         /*public void LoadData(GameData data)

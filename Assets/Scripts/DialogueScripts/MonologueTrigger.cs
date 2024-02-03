@@ -1,17 +1,23 @@
-﻿using Cinemachine;
+﻿using Assets.Scripts.Translation;
+using Cinemachine;
 using UnityEngine;
 
 public class MonologueTrigger : MonoBehaviour
 {
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON;
+    [SerializeField] private TextAsset inkJSON_russian;
+    [SerializeField] private TextAsset inkJSON_english;
     private bool playerInRange;
 
     private void Awake()
     {
         //playerInRange = false;
         TimelinePlayer.GetInstance().PauseTimeline();
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+
+        if(Language.instance.currentLanguage == "English")
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON_english);
+        else if (Language.instance.currentLanguage == "Русский" && inkJSON_russian != null)
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON_russian);
     }
 
   /*  private void Update()

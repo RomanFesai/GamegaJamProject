@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bunker.unity
     guid: b7a08ab82df8b1f47ba57f0692a1f184
+  - enabled: 1
+    path: Assets/Scenes/OtherRealm.unity
+    guid: d5c69ea8ddc57a6428e81c63f05391d3
   m_configObjects: {}

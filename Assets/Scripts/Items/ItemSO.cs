@@ -18,6 +18,7 @@ namespace Assets.Scripts.Items
         Matches,
         Rifle,
         Flask,
-        firstAid
+        firstAid,
+        Other
     }
 }

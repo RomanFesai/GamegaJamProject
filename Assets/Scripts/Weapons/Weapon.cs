@@ -33,6 +33,7 @@ namespace Assets.Scripts.Weapons
 
         [Header("Ammo")]
         [SerializeField] private GameObject FollowUI;
+        [SerializeField] private GameObject aim_dot;
         public TextMeshProUGUI ammoInfo;
         [SerializeField] private int maxAmmo = 8;
         public static int magazineSize = 8;
@@ -89,13 +90,14 @@ namespace Assets.Scripts.Weapons
             gunready = true;
             aim = false;
 
-            if (shootHole == null || FollowUI == null || ammoInfo == null || recoilPosition == null || rotationPoint == null)
+            if (shootHole == null || FollowUI == null || ammoInfo == null || recoilPosition == null || rotationPoint == null || aim_dot == null)
             {
                 shootHole = GameObject.Find("ShootHole");
                 FollowUI = GameObject.Find("Ammo");
                 ammoInfo = GameObject.Find("currentAmmo").GetComponent<TextMeshProUGUI>();
                 recoilPosition = GameObject.Find("Head").transform;
                 rotationPoint = GameObject.Find("Hand").transform;
+                aim_dot = GameObject.Find("dot");
             }
 
             FollowUI.GetComponentInChildren<Image>().enabled = true;
@@ -106,6 +108,9 @@ namespace Assets.Scripts.Weapons
         {
             gunready = false;
             aim = false;
+
+            if(aim_dot != null)
+                aim_dot.SetActive(true);
 
             if(FollowUI != null)
             {
@@ -175,10 +180,13 @@ namespace Assets.Scripts.Weapons
             if (Input.GetMouseButtonDown(1))
             {
                 aim = true;
+                aim_dot.SetActive(false);
             }
             else if (Input.GetMouseButtonUp(1))
             {
                 aim = false;
+                aim_dot.SetActive(true);
+
             }
         }
 
@@ -203,7 +211,7 @@ namespace Assets.Scripts.Weapons
                 weaponAnim.SetTrigger("Shoot");
                 muzzleFlash.Play();
             }
-            else if (Time.time >= nextTimeToFire && !isReloading)
+            else if (Time.time >= nextTimeToFire && !isReloading && !PauseMenu.GameIsPaused)
             {
                 AudioManager.GetInstance().Play("Click");
             }
