@@ -41,11 +41,6 @@ namespace Assets.Scripts
             {
                 dynamite.SetActive(true);
             }
-
-            if (playerInRange)
-            {
-                apple.isKinematic = false;
-            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -63,6 +58,7 @@ namespace Assets.Scripts
             if(other.gameObject.tag == "Player")
             {
                 playerInRange = true;
+                apple.isKinematic = false;
             }
         }
 

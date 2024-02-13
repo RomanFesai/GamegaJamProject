@@ -23,12 +23,23 @@ namespace Assets.Scripts.SaveLoad
             }
             else
             {
-                Debug.LogWarning("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
+                Debug.LogWarning("Found more than one Temp Data in the scene. Destroying the newest one.");
                 Destroy(this.gameObject);
             }
 
             DontDestroyOnLoad(gameObject);
         }
+
+        public void NewGame()
+        {
+            rifleAmmo = 3;
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i].SlotNumber = 0;
+                items[i].itemObjName = null;
+            }
+        }
+
         public void Save(TempData data)
         {
             data.rifleAmmo = Rifle.currentAmmo;
@@ -47,9 +58,10 @@ namespace Assets.Scripts.SaveLoad
             Rifle.currentAmmo = data.rifleAmmo;
             for (int i = 0; i < items.Length; i++)
             {
-                if (data.items[i].itemObjName != "")
+                if (data.items[i].itemObjName != "" && data.items[i].itemObjName != null)
                 {
                     var itemToAdd = Instantiate(itemsToLoad.Find(p => p.gameObject.name == data.items[i].itemObjName));
+                    itemToAdd.name = data.items[i].itemObjName;
                     PlayerInventory.instance.AddItemToSlot(PlayerInventory.instance.inventoryList[i], data.items[i].SlotNumber + 1, itemToAdd);
                 }
             }

@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OtherRealm.unity
     guid: d5c69ea8ddc57a6428e81c63f05391d3
+  - enabled: 1
+    path: Assets/Scenes/GoodEnding.unity
+    guid: c8dec0b9a389052439053a7222cb3fd4
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: 9ad01cd950e94c944a8470d9f4ababeb
+  - enabled: 1
+    path: Assets/Scenes/BadEnding_p2.unity
+    guid: bb14e071176698240a26a1dca34dddf8
   m_configObjects: {}

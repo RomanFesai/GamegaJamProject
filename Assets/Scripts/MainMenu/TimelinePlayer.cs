@@ -8,6 +8,7 @@ public class TimelinePlayer : MonoBehaviour
     private PlayableDirector director;
     public GameObject controlPanel;
     public static TimelinePlayer instance;
+    [SerializeField] private Animator animator;
     private void Awake()
     {
         director = GetComponent<PlayableDirector>();
@@ -27,7 +28,8 @@ public class TimelinePlayer : MonoBehaviour
 
     private void Director_Played(PlayableDirector obj)
     {
-        controlPanel.SetActive(false);
+        if (controlPanel != null)
+            controlPanel.SetActive(false);
     }
 
     private void Director_Stopped(PlayableDirector obj)
@@ -38,11 +40,17 @@ public class TimelinePlayer : MonoBehaviour
 
     public void StartTimeline()
     {
+        if (animator != null)
+            animator.speed = 1;
+
         director.Play();
     }
 
     public void PauseTimeline()
     {
+        if(animator != null)
+            animator.speed = 0;
+
         director.Pause();
     }
 }
